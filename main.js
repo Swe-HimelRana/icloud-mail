@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, shell } = require('electron');
 const path = require('path');
+const contextMenu = require('electron-context-menu');
 
 let mainWindow;
 
@@ -17,7 +18,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadURL('https://www.icloud.com/mail/');
+  mainWindow.loadURL('https://www.icloud.com/mail/', {userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'});
 
   mainWindow.on('closed', function () {
     mainWindow = null;
@@ -54,12 +55,30 @@ function checkNotificationPermission() {
 function sendNotification() {
   // Send an IPC message to show a notification
   mainWindow.webContents.send('show-notification', {
-    title: 'Electron Notification',
-    body: 'This is a sample notification from Electron!',
+    title: 'Icloud Notification',
+    body: 'This is a sample notification from Icloud!',
   });
 }
 
 app.on('ready', createWindow);
+
+// Enable context menus
+app.whenReady().then(() => {
+  // Enable context menus
+  contextMenu({
+    showInspectElement: false, // Hide "Inspect Element" option
+    prepend: (params, browserWindow) => [
+      {
+        label: 'Copy',
+        role: 'copy',
+      },
+      {
+        label: 'Paste',
+        role: 'paste',
+      },
+    ],
+  });
+})
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit();

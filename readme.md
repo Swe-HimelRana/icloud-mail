@@ -27,6 +27,14 @@ This application is an independent project and is not affiliated with or endorse
 
 Simplify your email management and enjoy a dedicated desktop space for your iCloud Mail. Download the app now and bring your emails to the forefront!
 
+# Changelog
+
+## [1.1.0] - 2024-02-25
+- Added a new feature (context menu)
+    - Now you can copy, past, select, copy link
+## [1.0.0] - 2024-01-19
+- Initial release
+
 
 ## Installation
 

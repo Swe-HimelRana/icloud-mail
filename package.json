@@ -1,17 +1,14 @@
 {
   "name": "icloud-mail",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An Unofficial desktop app for Icloud Mail",
   "main": "main.js",
   "homepage": "https://apps.himelrana.com/icloud-mail",
-  
- 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
-    
   },
   "build": {
     "asar": true,
@@ -62,5 +59,8 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^28.1.4"
+  },
+  "dependencies": {
+    "electron-context-menu": "^3.6.1"
   }
 }
