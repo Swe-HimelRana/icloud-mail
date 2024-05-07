@@ -18,7 +18,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadURL('https://www.icloud.com/mail/', {userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'});
+  mainWindow.loadURL('https://www.icloud.com/mail/', {userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'});
 
   mainWindow.on('closed', function () {
     mainWindow = null;
@@ -55,8 +55,8 @@ function checkNotificationPermission() {
 function sendNotification() {
   // Send an IPC message to show a notification
   mainWindow.webContents.send('show-notification', {
-    title: 'Icloud Notification',
-    body: 'This is a sample notification from Icloud!',
+    title: 'iCloud Notification',
+    body: 'This is a sample notification from iCloud!',
   });
 }
 
@@ -73,9 +73,44 @@ app.whenReady().then(() => {
         role: 'copy',
       },
       {
+        label: 'Cut',
+        role: 'cut'
+      },
+      {
         label: 'Paste',
         role: 'paste',
       },
+      { type: 'separator' },
+      {
+        label: 'Undo',
+        role: 'undo'
+      },
+      {
+        label: 'Redo',
+        role: 'redo'
+      },
+      { type: 'separator' },
+      {
+        label: 'Zoom In',
+        role: 'zoomIn'
+      },
+      {
+        label: 'Zoom Out',
+        role: 'zoomOut'
+      },
+      {
+        label: 'Reset Zoom',
+        role: 'resetZoom'
+      },
+      { type: 'separator' },
+      {
+        label: 'Reload',
+        role: 'forceReload'
+      },
+      {
+        label: 'Toggle Full Screen',
+        role: 'togglefullscreen'
+      }
     ],
   });
 })
